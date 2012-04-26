@@ -510,6 +510,7 @@ interface IAuthManager
 interface IBehavior
 {
 	/**
+	 * 附加行为到组件
 	 * Attaches the behavior object to the component.
 	 * @param CComponent $component the component that this behavior is to be attached to.
 	 */

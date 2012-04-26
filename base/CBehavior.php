@@ -11,6 +11,7 @@
 /**
  * CBehavior is a convenient base class for behavior classes.
  *
+ * attach行为的组件对象
  * @property CComponent $owner The owner component that this behavior is attached to.
  * @property boolean $enabled Whether this behavior is enabled.
  *

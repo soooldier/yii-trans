@@ -93,6 +93,7 @@ class CComponent
 	private $_m;
 
 	/**
+	 * 返回组件属性值，事件处理函数列表或者事件行为
 	 * Returns a property value, an event handler list or a behavior based on its name.
 	 * Do not call this method. This is a PHP magic method that we override
 	 * to allow using the following syntax to read a property or obtain event handlers:
