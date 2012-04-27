@@ -269,6 +269,7 @@ class CComponent
 	}
 
 	/**
+	 * 根据行为返回行为类对象
 	 * Returns the named behavior object.
 	 * The name 'asa' stands for 'as a'.
 	 * @param string $behavior the behavior name
@@ -313,7 +314,10 @@ class CComponent
 	}
 
 	/**
+	 * 添加一个行为到组件
 	 * Attaches a behavior to this component.
+	 * 这个方法会根据传入的的配置产生一个行为对象，随后，行为对象会通过调用对象方法
+	 * attach进行初始化
 	 * This method will create the behavior object based on the given
 	 * configuration. After that, the behavior object will be initialized
 	 * by calling its {@link IBehavior::attach} method.
@@ -332,6 +336,7 @@ class CComponent
 	}
 
 	/**
+	 * 从组件对象中卸载一个行为对象
 	 * Detaches a behavior from the component.
 	 * The behavior's {@link IBehavior::detach} method will be invoked.
 	 * @param string $name the behavior's name. It uniquely identifies the behavior.
@@ -349,6 +354,7 @@ class CComponent
 	}
 
 	/**
+	 * 置组件中的所有行为为可用
 	 * Enables all behaviors attached to this component.
 	 */
 	public function enableBehaviors()
@@ -361,6 +367,7 @@ class CComponent
 	}
 
 	/**
+	 * 置组件中的所有行为为不可用
 	 * Disables all behaviors attached to this component.
 	 */
 	public function disableBehaviors()
@@ -373,6 +380,7 @@ class CComponent
 	}
 
 	/**
+	 * 置组件中的某一行为为可用
 	 * Enables an attached behavior.
 	 * A behavior is only effective when it is enabled.
 	 * A behavior is enabled when first attached.
@@ -385,6 +393,7 @@ class CComponent
 	}
 
 	/**
+	 * 置组件中的某一行为不可用
 	 * Disables an attached behavior.
 	 * A behavior is only effective when it is enabled.
 	 * @param string $name the behavior's name. It uniquely identifies the behavior.
@@ -396,6 +405,7 @@ class CComponent
 	}
 
 	/**
+	 * 检查组件的某一属性是否定义
 	 * Determines whether a property is defined.
 	 * A property is defined if there is a getter or setter method
 	 * defined in the class. Note, property names are case-insensitive.
@@ -410,6 +420,7 @@ class CComponent
 	}
 
 	/**
+	 * 检查组件的某一属性是否可读
 	 * Determines whether a property can be read.
 	 * A property can be read if the class has a getter method
 	 * for the property name. Note, property name is case-insensitive.
@@ -423,6 +434,7 @@ class CComponent
 	}
 
 	/**
+	 * 检查组件的某一属性是否可写
 	 * Determines whether a property can be set.
 	 * A property can be written if the class has a setter method
 	 * for the property name. Note, property name is case-insensitive.
@@ -436,6 +448,7 @@ class CComponent
 	}
 
 	/**
+	 * 检查组件是定义某一事件
 	 * Determines whether an event is defined.
 	 * An event is defined if the class has a method named like 'onXXX'.
 	 * Note, event name is case-insensitive.
@@ -448,6 +461,7 @@ class CComponent
 	}
 
 	/**
+	 * 检查组件某一事件是否定义事件处理函数
 	 * Checks whether the named event has attached handlers.
 	 * @param string $name the event name
 	 * @return boolean whether an event has been attached one or several handlers
@@ -459,6 +473,7 @@ class CComponent
 	}
 
 	/**
+	 * 返回组件某一事件的事件处理函数
 	 * Returns the list of attached event handlers for an event.
 	 * @param string $name the event name
 	 * @return CList list of attached event handlers for the event
@@ -479,6 +494,7 @@ class CComponent
 	}
 
 	/**
+	 * 添加一个事件处理函数到某一event
 	 * Attaches an event handler to an event.
 	 *
 	 * An event handler must be a valid PHP callback, i.e., a string referring to
@@ -532,6 +548,7 @@ class CComponent
 	}
 
 	/**
+	 * 触发组件事件
 	 * Raises an event.
 	 * This method represents the happening of an event. It invokes
 	 * all attached handlers for the event.
