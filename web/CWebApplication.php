@@ -247,8 +247,9 @@ class CWebApplication extends CApplication
 	 */
 	public function getTheme()
 	{
-		if(is_string($this->_theme))
+		if(is_string($this->_theme)) {
 			$this->_theme=$this->getThemeManager()->getTheme($this->_theme);
+		}		
 		return $this->_theme;
 	}
 
@@ -267,6 +268,7 @@ class CWebApplication extends CApplication
 	 */
 	public function runController($route)
 	{
+		//根据route创建Controller对象数组
 		if(($ca=$this->createController($route))!==null)
 		{
 			list($controller,$actionID)=$ca;
@@ -282,16 +284,25 @@ class CWebApplication extends CApplication
 	}
 
 	/**
+	 * 根据route创建一个controller实例
 	 * Creates a controller instance based on a route.
+	 * route应该包含controllerID和actionID
 	 * The route should contain the controller ID and the action ID.
+	 * 它也可能包含额外的GET变量信息
 	 * It may also contain additional GET variables. All these must be concatenated together with slashes.
 	 *
+	 * 这个方法尝试按照以下顺序创建一个controller
 	 * This method will attempt to create a controller in the following order:
 	 * <ol>
+	 * 如果route的第一部分在controllerMap里面有记录，则在map中响应的controller实例
+	 * 被创建
 	 * <li>If the first segment is found in {@link controllerMap}, the corresponding
 	 * controller configuration will be used to create the controller;</li>
+	 * 如果route的第一部分是一个moduleID，那么就会在响应的module中创建controller
+	 * 实例
 	 * <li>If the first segment is found to be a module ID, the corresponding module
 	 * will be used to create the controller;</li>
+	 * 否则，搜索controllerPath目录下的文件以创建controller实例
 	 * <li>Otherwise, it will search under the {@link controllerPath} to create
 	 * the corresponding controller. For example, if the route is "admin/user/create",
 	 * then the controller will be created using the class file "protected/controllers/admin/UserController.php".</li>

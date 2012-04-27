@@ -11,6 +11,7 @@
 /**
  * CUrlManager manages the URLs of Yii Web applications.
  *
+ * 它提供URL构造函数createUrl和URL解析函数parseUrl
  * It provides URL construction ({@link createUrl()}) as well as parsing ({@link parseUrl()}) functionality.
  *
  * URLs managed via CUrlManager can be in one of the following two formats,
@@ -133,16 +134,20 @@ class CUrlManager extends CApplicationComponent
 	 */
 	public $rules=array();
 	/**
+	 * url后缀，比如http://yii.com/index.php/site/contact.html
 	 * @var string the URL suffix used when in 'path' format.
 	 * For example, ".html" can be used so that the URL looks like pointing to a static HTML page. Defaults to empty.
 	 */
 	public $urlSuffix='';
 	/**
+	 * 是否显示入口文件---index.php
 	 * @var boolean whether to show entry script name in the constructed URL. Defaults to true.
 	 */
 	public $showScriptName=true;
 	/**
+	 * 是否添加GET中的参数到url里
 	 * @var boolean whether to append GET parameters to the path info part. Defaults to true.
+	 * 仅仅在urlFormat是path的时候有效
 	 * This property is only effective when {@link urlFormat} is 'path' and is mainly used when
 	 * creating URLs. When it is true, GET parameters will be appended to the path info and
 	 * separate from each other using slashes. If this is false, GET parameters will be in query part.
@@ -153,6 +158,7 @@ class CUrlManager extends CApplicationComponent
 	 */
 	public $routeVar='r';
 	/**
+	 * 是否大小写敏感
 	 * @var boolean whether routes are case-sensitive. Defaults to true. By setting this to false,
 	 * the route in the incoming request will be turned to lower case first before further processing.
 	 * As a result, you should follow the convention that you use lower case when specifying
@@ -171,6 +177,7 @@ class CUrlManager extends CApplicationComponent
 	 */
 	public $matchValue=false;
 	/**
+	 * 用于缓存URL规则的缓存组件ID，如果为false则不缓存
 	 * @var string the ID of the cache application component that is used to cache the parsed URL rules.
 	 * Defaults to 'cache' which refers to the primary cache application component.
 	 * Set this property to false if you want to disable caching URL rules.

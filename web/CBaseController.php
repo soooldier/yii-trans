@@ -79,10 +79,14 @@ abstract class CBaseController extends CComponent
 
 
 	/**
+	 * 渲染一个视图文件
 	 * Renders a view file.
 	 *
+	 * 视图文件地址
 	 * @param string $viewFile view file path
+	 * 需要解析到视图文件里的变量数据
 	 * @param array $data data to be extracted and made available to the view
+	 * 更改返回方式echo或者return，默认为echo
 	 * @param boolean $return whether the rendering result should be returned instead of being echoed
 	 * @return string the rendering result. Null if the rendering result is not required.
 	 * @throws CException if the view file does not exist

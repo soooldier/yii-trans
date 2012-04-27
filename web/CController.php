@@ -554,8 +554,11 @@ class CController extends CBaseController
 	}
 
 	/**
+	 * 根据传入的view名找到对应的模板文件
 	 * Looks for the view file according to the given view name.
 	 *
+	 * 如果当前的皮肤是启用的，这个方法会调用{@link CTheme::getViewFile}来决定
+	 * 返回哪个模板文件
 	 * When a theme is currently active, this method will call {@link CTheme::getViewFile} to determine
 	 * which view file should be returned.
 	 *
@@ -584,8 +587,9 @@ class CController extends CBaseController
 	 */
 	public function getViewFile($viewName)
 	{
-		if(($theme=Yii::app()->getTheme())!==null && ($viewFile=$theme->getViewFile($this,$viewName))!==false)
+		if(($theme=Yii::app()->getTheme())!==null && ($viewFile=$theme->getViewFile($this,$viewName))!==false) {
 			return $viewFile;
+		}
 		$moduleViewPath=$basePath=Yii::app()->getViewPath();
 		if(($module=$this->getModule())!==null)
 			$moduleViewPath=$module->getViewPath();
@@ -757,20 +761,31 @@ class CController extends CBaseController
 	}
 
 	/**
+	 * 使用框架来渲染一个视图 
 	 * Renders a view with a layout.
 	 *
+	 * 这个方法首先会调用renderPartial来渲染视图（内容视图）
 	 * This method first calls {@link renderPartial} to render the view (called content view).
+	 * 然后渲染框架视图（在合适的位置嵌入内容视图） 
 	 * It then renders the layout view which may embed the content view at appropriate place.
+	 * 在框架视图中，内容视图的渲染结果以变量的方式来访问 
 	 * In the layout view, the content view rendering result can be accessed via variable
+	 * 最后，调用{@link processOutput}在可用时来插入脚本 
 	 * <code>$content</code>. At the end, it calls {@link processOutput} to insert scripts
+	 * 和动态内容
 	 * and dynamic contents if they are available.
 	 *
+	 * 默认的框架模板是"protected/views/layouts/main.php"
 	 * By default, the layout view script is "protected/views/layouts/main.php".
+	 * 可以通过设置{@link layout}来修改它
 	 * This may be customized by changing {@link layout}.
 	 *
+	 * 要被渲染的视图名称，See {@link getViewFile}
 	 * @param string $view name of the view to be rendered. See {@link getViewFile} for details
 	 * about how the view script is resolved.
+	 * 在视图中被解析为PHP变量的数据 
 	 * @param array $data data to be extracted into PHP variables and made available to the view script
+	 * 返回渲染的结果或者直接显示给最终用户
 	 * @param boolean $return whether the rendering result should be returned instead of being displayed to end users.
 	 * @return string the rendering result. Null if the rendering result is not required.
 	 * @see renderPartial

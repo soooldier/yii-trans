@@ -9,6 +9,7 @@
  */
 
 /**
+ * CLogRouter管理日志记录在不同的设备上。（db，文件，页面等）
  * CLogRouter manages log routes that record log messages in different media.
  *
  * For example, a file log route {@link CFileLogRoute} records log messages

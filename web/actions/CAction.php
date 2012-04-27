@@ -11,12 +11,15 @@
 /**
  * CAction is the base class for all controller action classes.
  *
+ * CAction提供一种拆分复杂的controller到单独的action class文件的方式。
  * CAction provides a way to divide a complex controller into
  * smaller actions in separate class files.
  *
+ * action类必须覆盖run()函数，run()在action被请求的时候执行
  * Derived classes must implement {@link run()} which is invoked by
  * controller when the action is requested.
  *
+ * 一个action实例可以通过getController方法访问它的controller实例
  * An action instance can access its controller via {@link getController controller} property.
  *
  * @property CController $controller The controller who owns this action.
