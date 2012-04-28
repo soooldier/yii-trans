@@ -1,6 +1,6 @@
 <?php
 /**
- * YiiBase class file.
+ * YiiBase class file. 
  *
  * @author Qiang Xue <qiang.xue@gmail.com>
  * @link http://www.yiiframework.com/
