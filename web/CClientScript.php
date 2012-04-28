@@ -181,6 +181,7 @@ class CClientScript extends CApplicationComponent
 	}
 
 	/**
+	 * 在模板中渲染脚本文件
 	 * Renders the registered scripts.
 	 * This method is called in {@link CController::render} when it finishes
 	 * rendering content. CClientScript thus gets a chance to insert script tags

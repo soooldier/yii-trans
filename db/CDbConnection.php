@@ -78,11 +78,17 @@
  * )
  * </pre>
  *
+ * $active代表数据库连结是否已经建立
  * @property boolean $active Whether the DB connection is established.
+ * $pdoInstance PDO实例
  * @property PDO $pdoInstance The PDO instance, null if the connection is not established yet.
+ * $currentTransaction 当前的事务
  * @property CDbTransaction $currentTransaction The currently active transaction. Null if no active transaction.
+ * $schema 当前数据库的schema
  * @property CDbSchema $schema The database schema for the current connection.
+ * $commandBuilder 命令生成器
  * @property CDbCommandBuilder $commandBuilder The command builder.
+ * $lastInsertID 最后插入数据的主键id，
  * @property string $lastInsertID The row ID of the last row inserted, or the last value retrieved from the sequence object.
  * @property mixed $columnCase The case of the column names.
  * @property mixed $nullConversion How the null and empty strings are converted.
@@ -124,6 +130,7 @@ class CDbConnection extends CApplicationComponent
 	 */
 	public $password='';
 	/**
+	 * 表结构的缓存时间
 	 * @var integer number of seconds that table metadata can remain valid in cache.
 	 * Use 0 or negative value to indicate not caching schema.
 	 * If greater than 0 and the primary cache is enabled, the table metadata will be cached.
@@ -131,6 +138,7 @@ class CDbConnection extends CApplicationComponent
 	 */
 	public $schemaCachingDuration=0;
 	/**
+	 * 哪些表的表结构不被缓存
 	 * @var array list of tables whose metadata should NOT be cached. Defaults to empty array.
 	 * @see schemaCachingDuration
 	 */
@@ -142,6 +150,7 @@ class CDbConnection extends CApplicationComponent
 	 */
 	public $schemaCacheID='cache';
 	/**
+	 * 结果集的缓存时间
 	 * @var integer number of seconds that query results can remain valid in cache.
 	 * Use 0 or negative value to indicate not caching query results (the default behavior).
 	 *
@@ -423,6 +432,7 @@ class CDbConnection extends CApplicationComponent
 	}
 
 	/**
+	 * 给pdo做一些初始化操作
 	 * Initializes the open db connection.
 	 * This method is invoked right after the db connection is established.
 	 * The default implementation is to set the charset for MySQL and PostgreSQL database connections.
