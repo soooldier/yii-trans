@@ -197,7 +197,9 @@ class CFileCache extends CCache
 	}
 
 	/**
+	 * 删除缓存文件
 	 * Removes expired cache files.
+	 * 是否仅仅删除过期的缓存文件，如果设置为true，则仅仅删除过期文件，如设置位false则删除全部文件.
 	 * @param boolean $expiredOnly whether to removed expired cache files only. If true, all cache files under {@link cachePath} will be removed.
 	 * @param string $path the path to clean with. If null, it will be {@link cachePath}.
 	 */
