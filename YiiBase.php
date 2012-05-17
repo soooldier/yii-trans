@@ -441,6 +441,7 @@ class YiiBase
 	}
 
 	/**
+	 * 打印调试信息（只有在应用处于debug模式时才有效）
 	 * Writes a trace message.
 	 * This method will only log a message when the application is in debug mode.
 	 * @param string $msg message to be logged
