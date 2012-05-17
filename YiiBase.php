@@ -552,7 +552,9 @@ class YiiBase
 	}
 
 	/**
+	 * 翻译信息志指定的语言
 	 * Translates a message to the specified language.
+	 *
 	 * This method supports choice format (see {@link CChoiceFormat}),
 	 * i.e., the message returned will be chosen from a few candidates according to the given
 	 * number value. This feature is mainly used to solve plural format issue in case

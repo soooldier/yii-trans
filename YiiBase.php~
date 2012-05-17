@@ -41,7 +41,6 @@ defined('YII_PATH') or define('YII_PATH',dirname(__FILE__));
  * Defines the Zii library installation path.
  */
 defined('YII_ZII_PATH') or define('YII_ZII_PATH',YII_PATH.DIRECTORY_SEPARATOR.'zii');
-<asdfsafasdfasf>
 /**
  * YiiBase is a helper class serving common framework functionalities.
  *
@@ -553,6 +552,7 @@ class YiiBase
 	}
 
 	/**
+	 * 翻译信息志指定的语言
 	 * Translates a message to the specified language.
 	 * This method supports choice format (see {@link CChoiceFormat}),
 	 * i.e., the message returned will be chosen from a few candidates according to the given
